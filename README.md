@@ -22,6 +22,7 @@
 3. **프로젝트 실행**
 - **IDE (IntelliJ, Eclipse 등)에서 LibraryManagementSystem 클래스를 실행합니다.**
 - **커맨드 라인에서 다음 명령어로 실행합니다**
+  ```sh
   javac LibraryManagementSystem.java
   java LibraryManagementSystem
 5. **기능 사용**
