@@ -33,18 +33,18 @@ public class Library {
         members.add(member);
     }
 
-    public void removeMember(String id) {
-        members.removeIf(member -> member.getId().equals(id));
+    public void removeMember(long id) {
+        members.removeIf(member -> member.getId() == id);
     }
 
-    public Member findMember(String id) {
+    public Member findMember(long id) {
         return members.stream()
-                .filter(member -> member.getId().equals(id))
+                .filter(member -> member.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
 
-    public void borrowBook(String memberId, String isbn) {
+    public void borrowBook(long memberId, String isbn) {
         Member member = findMember(memberId);
         Book book = findBook(isbn);
         if (member != null && book != null && book.isAvailable()) {
@@ -56,7 +56,7 @@ public class Library {
         }
     }
 
-    public void returnBook(String memberId, String isbn) {
+    public void returnBook(long memberId, String isbn) {
         Member member = findMember(memberId);
         Book book = findBook(isbn);
         if (member != null && book != null && member.getBorrowedBooks().contains(book)) {
@@ -101,5 +101,28 @@ public class Library {
             stats.put(book.getCategory(), stats.getOrDefault(book.getCategory(), 0) + 1);
         }
         return stats;
+    }
+
+    public static void main(String[] args) {
+        Library library = new Library();
+
+        // Example usage
+        Book book1 = new Book("978-3-16-148410-0", "Harry Potter", "J.K. Rowling", "Fantasy");
+        library.addBook(book1);
+
+        Member member1 = new Member("John Doe");
+        library.addMember(member1);
+
+        library.borrowBook(member1.getId(), book1.getIsbn());
+        library.addReview(book1.getIsbn(), "Great book!", 5);
+
+        library.listBooks();
+        library.listMembers();
+
+        library.returnBook(member1.getId(), book1.getIsbn());
+    }
+    
+    public void listMembers() {
+        members.forEach(System.out::println);
     }
 }
