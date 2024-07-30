@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
+    private long id;
     private String isbn;
     private String title;
     private String author;
@@ -10,6 +11,7 @@ public class Book {
     private List<Review> reviews;
 
     public Book(String isbn, String title, String author, String category) {
+        this.id = IDGenerator.generateID();
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -18,6 +20,7 @@ public class Book {
         this.reviews = new ArrayList<>();
     }
 
+    public long getId() { return id; }
     public String getIsbn() { return isbn; }
     public String getTitle() { return title; }
     public String getAuthor() { return author; }
@@ -37,7 +40,8 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "isbn='" + isbn + '\'' +
+                "id=" + id +
+                ", isbn='" + isbn + '\'' +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", category='" + category + '\'' +
