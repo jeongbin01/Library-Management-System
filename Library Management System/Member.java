@@ -2,17 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Member {
-    private String id;
+    private long id;
     private String name;
     private List<Book> borrowedBooks;
 
-    public Member(String id, String name) {
-        this.id = id;
+    public Member(String name) {
+        this.id = IDGenerator.generateID();
         this.name = name;
         this.borrowedBooks = new ArrayList<>();
     }
 
-    public String getId() { return id; }
+    public long getId() { return id; }
     public String getName() { return name; }
     public List<Book> getBorrowedBooks() { return borrowedBooks; }
 
@@ -26,6 +26,9 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{id='" + id + "', name='" + name + "', borrowedBooks=" + borrowedBooks.size() + "}";
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
