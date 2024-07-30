@@ -20,7 +20,7 @@
 1. **프로젝트 클론 및 빌드**
     ```sh
    git clone <your-repo-url>
-   cd <your-repo-directory>
+   ㅑd <your-repo-directory>
 3. **프로젝트 실행**
 - **IDE (IntelliJ, Eclipse 등)에서 LibraryManagementSystem 클래스를 실행합니다.**
 - **커맨드 라인에서 다음 명령어로 실행합니다**
